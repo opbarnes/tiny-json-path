@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <body>
+    <h1>Browser UMD (local)</h1>
+    <p id="output">Loading…</p>
+
+    <script src="../../dist/tiny-json-path.umd.js"></script>
+    <script>
+      (async () => {
+        try {
+          const res = await fetch("https://jsonplaceholder.typicode.com/users");
+          const data = await res.json();
+          const username = window.tinyJsonPath.getTinyJsonPath(data, "$[0].username");
+          document.getElementById("output").textContent = String(username);
+        } catch (err) {
+          document.getElementById("output").textContent = "Error: " + err;
+        }
+      })();
+    </script>
+  </body>
+</html>

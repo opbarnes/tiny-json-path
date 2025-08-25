@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <body>
+    <h1>Browser ESM (local)</h1>
+    <p id="output">Loading…</p>
+
+    <script type="module">
+      import { getTinyJsonPath } from "../../dist/tiny-json-path.es.js";
+
+      (async () => {
+        try {
+          const res = await fetch("https://jsonplaceholder.typicode.com/users");
+          const data = await res.json();
+          const username = getTinyJsonPath(data, "$[0].username");
+          document.getElementById("output").textContent = String(username);
+        } catch (err) {
+          document.getElementById("output").textContent = "Error: " + err;
+        }
+      })();
+    </script>
+  </body>
+</html>

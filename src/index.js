@@ -1,0 +1,1 @@
+export { getTinyJsonPath, setTinyJsonPath } from './core/tinyJsonPath.js';

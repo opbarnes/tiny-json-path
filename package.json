@@ -4,6 +4,9 @@
   "description": "Lightweight JSONPath-style library for getting and setting values in JavaScript objects.",
   "author": "O. Patrick Barnes",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "exports": {
     ".": {

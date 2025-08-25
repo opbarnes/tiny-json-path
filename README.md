@@ -181,7 +181,7 @@ run().catch(err => {
 Run with:
 
 ```bash
-node examples/node-esm.mjs
+node examples/node-esm/node-esm.mjs
 ```
 
 #### Requirements

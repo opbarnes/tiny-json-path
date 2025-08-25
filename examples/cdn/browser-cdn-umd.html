@@ -1,17 +1,15 @@
 <!doctype html>
 <html>
   <body>
-    <h1>Browser ESM (local)</h1>
-    <p id="output">Loading…</p>
-
-    <script type="module">
-      import { getTinyJsonPath, setTinyJsonPath } from "../../dist/tiny-json-path.es.js";
-
+    <h1>Browser CDN (UMD)</h1>
+    <pre id="out"></pre>
+    <script src="https://cdn.jsdelivr.net/npm/tiny-json-path@1.0.2/dist/tiny-json-path.es.js"></script>
+    <script>
       (async () => {
         try {
           const res = await fetch("https://jsonplaceholder.typicode.com/users");
           const data = await res.json();
-          const username = getTinyJsonPath(data, "$[0].username");
+          const username = window.tinyJsonPath.getTinyJsonPath(data, "$[0].username");
           document.getElementById("output").textContent = String(username);
         } catch (err) {
           document.getElementById("output").textContent = "Error: " + err;

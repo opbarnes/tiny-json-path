@@ -3,7 +3,7 @@ name: Release (build + assets + npm)
 on:
   push:
     tags:
-      - 'v*.*.*'   # e.g., v1.2.3
+      - 'v*.*.*'
 
 jobs:
   release:
@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        # Use `npm ci` ONLY if you decide to commit package-lock.json
+        # If in the future it is decided to commit package-lock.json, change to `npm ci`
 
       - name: Verify tag matches package.json version
         run: |
@@ -55,5 +55,4 @@ jobs:
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --provenance
-        # If you don't want provenance, drop the flag and the id-token permission
+        run: npm publish --access public --provenance

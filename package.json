@@ -1,6 +1,6 @@
 {
   "name": "tiny-json-path",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lightweight JSONPath-style library for getting and setting values in JavaScript objects.",
   "author": "O. Patrick Barnes",
   "license": "MIT",
@@ -29,9 +29,6 @@
     "README.md",
     "LICENSE"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "jsdelivr": "dist/tiny-json-path.umd.min.js",
   "unpkg": "dist/tiny-json-path.umd.min.js",
   "scripts": {

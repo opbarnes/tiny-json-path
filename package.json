@@ -8,6 +8,14 @@
     "access": "public"
   },
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opbarnes/tiny-json-path"
+  },
+  "homepage": "https://github.com/opbarnes/tiny-json-path#readme",
+  "bugs": {
+    "url": "https://github.com/opbarnes/tiny-json-path/issues"
+  },
   "exports": {
     ".": {
       "import": "./dist/tiny-json-path.es.js",
@@ -21,6 +29,9 @@
     "README.md",
     "LICENSE"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "jsdelivr": "dist/tiny-json-path.umd.min.js",
   "unpkg": "dist/tiny-json-path.umd.min.js",
   "scripts": {

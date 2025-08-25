@@ -39,8 +39,9 @@ Why use this library?
       - [Bracket notation with string keys](#bracket-notation-with-string-keys)
       - [Bracket notation with numeric indices](#bracket-notation-with-numeric-indices)
   - [Unsupported Features](#unsupported-features)
-  - [Grammar (EBNF)](#grammar-ebnf)
-  - [License](#license)
+- [Development Scripts](#development-scripts)
+- [Grammar (EBNF)](#grammar-ebnf)
+- [License](#license)
 
 ## Installation
 
@@ -358,6 +359,60 @@ The following are **not implemented**:
 - Script expressions or functions
 
 Only the minimal subset documented above is recognized.
+
+## Development Scripts
+
+The following npm scripts are primarily for contributors or anyone who wants to
+build and test the library locally. They are not required for using
+`tiny-json-path` as a dependency in your project.
+
+### `npm run build`
+
+Builds the library using **Vite**. Generates the ESM and UMD bundles in the
+`dist/` directory. Use this before publishing or testing distribution files.
+
+### `npm run build:min`
+
+Runs **Terser** on both the UMD and ESM bundles, producing minified `.min.js`
+versions. This ensures your library can be loaded efficiently in production
+(smaller payloads for browsers and CDNs).
+
+### `npm run test`
+
+Runs the unit test suite once using **Vitest**. This is CI-friendly — the
+command exits with a non-zero status if any test fails.
+
+The tests cover:
+- Basic getters (`$.a`, `$.a.b.c`)
+- Array indexing (`$[0].x`, `$[1][2]`)
+- Quoted and dashed keys (`$["weird key"]`, `$.some-key`)
+- Whitespace tolerance (`$ . users [ 1 ] . name`)
+- Edge cases (invalid paths, missing `$`, out-of-bounds indices)
+- Setters that create nested objects/arrays, expand arrays, or fail gracefully
+- Round-trips (set + get) to verify correctness
+
+Use this to confirm the library behaves as expected before publishing.
+
+### `npm run test:watch`
+
+Starts **Vitest** in watch mode. Re-runs tests automatically when you change
+source or test files.
+
+This is ideal for:
+- Test-driven development (TDD)
+- Quickly checking fixes while editing code
+- Iterating on edge cases without manually re-running tests
+
+### `npm run serve:examples`
+Serves the repository root (including `examples/`) at
+[http://localhost:9000](http://localhost:9000) using **http-server**.
+
+This is useful if you want to try the UMD build in a browser page without
+bundlers.
+
+  > Note: `http-server` is intentionally **not** a devDependency.
+  > Install it globally instead (`npm install -g http-server`) so it doesn’t
+  > bloat the package.
 
 ### Grammar (EBNF)
 
